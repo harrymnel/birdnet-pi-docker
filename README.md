@@ -33,7 +33,7 @@ A containerized BirdNET-Pi installation optimized for Windows 11 Docker Desktop,
 
 1. **Clone this repository**:
    ```powershell
-   git clone https://github.com/yourusername/birdnet-pi-docker.git
+   git clone https://github.com/harrymnel/birdnet-pi-docker.git
    cd birdnet-pi-docker
    ```
 
