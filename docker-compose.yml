@@ -1,0 +1,26 @@
+services:
+  birdnet-pi:
+    container_name: birdnet-pi
+    build: .
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/stats", "||", "exit", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    ports:
+      - "8001:8081"  # Used to access WebUI
+      - "80:80"  # Optional: set to 80 to use Caddy's automatic SSL. Can otherwise be set to null to avoid opening an additional port
+      - "8000:8000"  # Icecast live audio stream
+    environment:
+      - TZ=Africa/Johannesburg  # Set your timezone
+      - BIRDSONGS_FOLDER=/config/BirdSongs  # Folder to store bird songs
+      - LIVESTREAM_BOOT_ENABLED=true  # Enable/disable livestream on boot
+      - Use_tphakala_model_v2=false  # Switch to BirdNET-Go classifier files
+      - ssl=false  # Enable/disable SSL
+    volumes:
+      - ./config:/config  # All your configuration files - and location of the default Birdsongs folder
+      - ./ssl:/ssl  # SSL certificates
+    tmpfs:
+      - /tmp # Optional

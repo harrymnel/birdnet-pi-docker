@@ -1,0 +1,67 @@
+name: Documentation Issue
+description: Report problems with documentation or suggest improvements
+title: "[Docs]: "
+labels: ["documentation", "triage"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us improve our documentation! Report issues or suggest enhancements.
+
+  - type: dropdown
+    id: doc-type
+    attributes:
+      label: Documentation Type
+      description: What type of documentation issue is this?
+      options:
+        - Incorrect information
+        - Missing information
+        - Unclear instructions
+        - Broken links
+        - Outdated content
+        - New documentation needed
+        - Improvement suggestion
+    validations:
+      required: true
+
+  - type: textarea
+    id: doc-location
+    attributes:
+      label: Documentation Location
+      description: Where is the documentation issue located?
+      placeholder: |
+        - File: README.md, docs/CONFIGURATION.md, etc.
+        - Section: "Installation", "Configuration", etc.
+        - Line numbers (if applicable)
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: Describe the documentation problem
+      placeholder: What is incorrect, missing, or unclear?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-improvement
+    attributes:
+      label: Suggested Improvement
+      description: How should the documentation be improved?
+      placeholder: |
+        - What should be added, changed, or removed?
+        - Provide specific text suggestions if possible
+        - Include any relevant examples or clarifications
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information
+      placeholder: |
+        - Screenshots of confusing sections
+        - Examples of what you expected to find
+        - Related documentation that works well

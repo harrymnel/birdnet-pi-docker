@@ -1,0 +1,166 @@
+# Example BirdNET-Pi Configuration
+# Copy this file to birdnet.conf and customize for your setup
+
+# ============================================================================
+# GEOGRAPHIC LOCATION (REQUIRED)
+# ============================================================================
+# These coordinates determine which birds BirdNET expects in your area
+# Use decimal degrees format (not degrees/minutes/seconds)
+# Get coordinates from: https://www.latlong.net/
+
+LATITUDE=-33.9249          # Your latitude (-90 to +90)
+LONGITUDE=18.4241          # Your longitude (-180 to +180)
+TIMEZONE=Africa/Johannesburg
+
+# ============================================================================
+# RTSP STREAM CONFIGURATION (REQUIRED)
+# ============================================================================
+# RTSP stream from your Raspberry Pi camera/microphone setup
+# Format: rtsp://PI_IP_ADDRESS:PORT/stream_path
+
+RTSP_STREAM=rtsp://192.168.1.100:8554/stream
+RTSP_STREAM_TO_LIVESTREAM=0    # Stream index (usually 0)
+
+# ============================================================================
+# AUDIO SETTINGS
+# ============================================================================
+# Audio processing parameters
+
+CHANNELS=1                     # Audio channels (1=mono, 2=stereo)
+SAMPLE_RATE=48000             # Sample rate in Hz
+RECORDING_LENGTH=15           # Audio chunk length in seconds
+EXTRACTION_LENGTH=3           # Analysis segment length in seconds
+OVERLAP=0.0                   # Segment overlap (0.0-2.9 seconds)
+
+# ============================================================================
+# DETECTION PARAMETERS
+# ============================================================================
+# Adjust these to fine-tune detection sensitivity and accuracy
+
+CONFIDENCE=0.7                # Detection confidence threshold (0.0-1.0)
+SENSITIVITY=1.25              # Analysis sensitivity (0.5-1.5)
+SF_THRESH=0.03               # Sigmoid threshold (0.001-0.1)
+
+# Frequency filtering (Hz) - set to 0 to disable
+BANDPASS_FMIN=0              # High-pass filter (remove low frequencies)
+BANDPASS_FMAX=15000          # Low-pass filter (remove high frequencies)
+
+# ============================================================================
+# MODEL CONFIGURATION
+# ============================================================================
+# BirdNET AI model settings
+
+MODEL=BirdNET_GLOBAL_6K_V2.4_Model_FP16
+THREADS=4                    # CPU threads for analysis
+TFLITE_THREADS=4            # TensorFlow Lite threads
+
+# ============================================================================
+# TIMING AND SCHEDULING
+# ============================================================================
+# When to perform analysis
+
+DAWN=05:30                   # Dawn start time (HH:MM)
+DUSK=20:30                   # Dusk end time (HH:MM)
+
+# ============================================================================
+# PRIVACY AND FILTERING
+# ============================================================================
+# Human detection and privacy settings
+
+PRIVACY_THRESHOLD=60         # Skip analysis if human detected (%)
+HUMAN_THRESHOLD=0.5         # Human detection sensitivity (0.0-1.0)
+
+# ============================================================================
+# STORAGE AND CLEANUP
+# ============================================================================
+# Disk management settings
+
+SAVE_AUDIO=true             # Save detected audio clips
+FULL_DISK=purge            # Action when disk full (delete/purge)
+PURGE_THRESHOLD=95         # Disk usage % to trigger cleanup
+
+# ============================================================================
+# WEB INTERFACE
+# ============================================================================
+# Web UI configuration
+
+CADDY_PWD=birdnet          # Web interface password
+BASIC_AUTH=false           # Enable/disable authentication
+
+# ============================================================================
+# EXTERNAL SERVICES (OPTIONAL)
+# ============================================================================
+# Integration with external services
+
+# BirdWeather (community bird tracking)
+BIRDWEATHER_ID=            # Your BirdWeather station ID
+
+# Notifications via Apprise
+APPRISE_ENABLED=false      # Enable notifications
+APPRISE_NEW_SPECIES=true   # Notify on new species detection
+
+# Flickr integration for bird images
+FLICKR_API_KEY=           # Your Flickr API key
+
+# ============================================================================
+# ADVANCED SETTINGS
+# ============================================================================
+# Advanced configuration options
+
+# Database settings
+DB_PWD=birdnet            # Database password
+SQLITE_CONFIRM_UPDATES=true
+
+# Logging and debugging
+LOG_LEVEL=info            # Logging verbosity (debug/info/warn/error)
+
+# Performance tuning
+WORKER_THREADS=2          # Analysis worker threads
+BATCH_SIZE=1             # Processing batch size
+
+# Custom image settings
+CUSTOM_IMAGE=false        # Use custom bird images
+ 
+# ============================================================================
+# SPECIES MANAGEMENT
+# ============================================================================
+# Species filtering is done through separate text files:
+#
+# include_species_list.txt  - Only detect these species (one per line)
+# exclude_species_list.txt  - Never detect these species (one per line)  
+# whitelist_species_list.txt - Priority species (always save detections)
+# confirmed_species_list.txt - Manually confirmed species
+#
+# Use scientific names (e.g., "Turdus merula" for Common Blackbird)
+# Leave files empty to disable filtering
+#
+# ============================================================================
+
+# ============================================================================
+# CONFIGURATION NOTES
+# ============================================================================
+#
+# 1. REQUIRED SETTINGS:
+#    - LATITUDE/LONGITUDE: Critical for species accuracy
+#    - RTSP_STREAM: Must match your Pi's RTSP server
+#
+# 2. DETECTION TUNING:
+#    - Lower CONFIDENCE for more detections (but more false positives)
+#    - Higher SENSITIVITY for quieter birds
+#    - Use BANDPASS filters to reduce noise
+#
+# 3. PERFORMANCE:
+#    - Reduce THREADS on slower systems
+#    - Increase RECORDING_LENGTH to reduce processing load
+#    - Use species lists to filter relevant birds
+#
+# 4. PRIVACY:
+#    - Enable PRIVACY_THRESHOLD in populated areas
+#    - Consider local recording laws and regulations
+#
+# 5. TROUBLESHOOTING:
+#    - Check logs: docker-compose logs -f
+#    - Verify RTSP: ffplay rtsp://YOUR_PI_IP:8554/stream
+#    - Test detection: Look for files in BirdSongs/By_Date/
+#
+# ============================================================================
