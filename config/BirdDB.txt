@@ -88,3 +88,7 @@
 2025-10-17;12:31:58;Buteo buteo;Common Buzzard;0.5255;-33.9278;18.4070;0.5;42;1.25;1
 2025-10-17;13:01:17;Buteo buteo;Common Buzzard;0.513;-33.9278;18.4070;0.5;42;1.25;1
 2025-10-17;14:04:24;Cinnyris chalybeus;Southern Double-collared Sunbird;0.8025;-33.9278;18.4070;0.7;42;1.25;1
+2025-10-17;15:25:35;Streptopelia semitorquata;Red-eyed Dove;0.763;-33.9278;18.4070;0.7;42;1.25;1
+2025-10-17;16:42:44;Zosterops virens;Cape White-eye;0.8231;-33.9278;18.4070;0.7;42;1.25;1
+2025-10-17;16:42:50;Zosterops virens;Cape White-eye;0.7385;-33.9278;18.4070;0.7;42;1.25;1
+2025-10-17;16:48:01;Zosterops virens;Cape White-eye;0.8243;-33.9278;18.4070;0.7;42;1.25;1

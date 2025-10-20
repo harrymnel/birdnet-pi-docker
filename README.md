@@ -96,7 +96,7 @@ A containerized BirdNET-Pi installation optimized for Windows 11 Docker Desktop,
 
 2. **Clone and configure this repository**:
    ```powershell
-   git clone https://github.com/yourusername/birdnet-pi-docker.git
+   git clone https://github.com/harrymnel/birdnet-pi-docker.git
    cd birdnet-pi-docker
    
    # Copy example configuration
@@ -158,7 +158,7 @@ This repository includes advanced audio processing capabilities:
 1. **On Raspberry Pi** (recommended):
    ```bash
    # SSH to your Pi and run:
-   curl -sSL https://raw.githubusercontent.com/yourusername/birdnet-pi-docker/main/scripts/setup_pi_audio.sh | bash
+   curl -sSL https://raw.githubusercontent.com/harrymnel/birdnet-pi-docker/main/scripts/setup_pi_audio.sh | bash
    ```
 
 2. **Verify audio processing**:
@@ -208,7 +208,7 @@ docker-compose ps
 
 1. Check the [Troubleshooting Guide](docs/TROUBLESHOOTING.md)
 2. Review container logs: `docker-compose logs -f`
-3. Open an [issue](https://github.com/yourusername/birdnet-pi-docker/issues)
+3. Open an [issue](https://github.com/harrymnel/birdnet-pi-docker/issues)
 
 ## 🛠️ Development
 
@@ -241,7 +241,7 @@ The `Dockerfile` includes permanent fixes for RTSP TCP transport:
 
 ```powershell
 # Clone and build
-git clone https://github.com/yourusername/birdnet-pi-docker.git
+git clone https://github.com/harrymnel/birdnet-pi-docker.git
 cd birdnet-pi-docker
 docker-compose build --no-cache
 
@@ -293,4 +293,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **🐦 Happy Bird Watching! 🐦**
 
-For support, please check the [documentation](docs/) or open an [issue](https://github.com/yourusername/birdnet-pi-docker/issues).
+For support, please check the [documentation](docs/) or open an [issue](https://github.com/harrymnel/birdnet-pi-docker/issues).
