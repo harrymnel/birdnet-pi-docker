@@ -1,0 +1,142 @@
+# BirdNET-Pi Docker - Git Ignore File
+# This file prevents personal data and recordings from being committed to the repository
+
+# ============================================================================
+# PERSONAL DATA - NEVER COMMIT THESE
+# ============================================================================
+
+# Your actual BirdNET configuration (contains personal location, RTSP URLs, etc.)
+config/birdnet.conf
+
+# All bird recordings and detection data
+config/BirdSongs/
+config/Charts/
+
+# Personal species lists (your local birds, exclusions, confirmations)
+config/include_species_list.txt
+config/exclude_species_list.txt
+config/whitelist_species_list.txt
+config/confirmed_species_list.txt
+
+# Database and detection logs (contains your personal detection history)
+config/birds.db*
+config/BirdDB.txt
+config/IdentifiedSoFar.txt
+
+# Notification and service configuration (may contain personal tokens/keys)
+config/apprise.txt
+config/body.txt
+
+# Image and disk management (personal preferences)
+config/blacklisted_images.txt
+config/disk_check_exclude.txt
+
+# ============================================================================
+# SYSTEM AND RUNTIME FILES
+# ============================================================================
+
+# Docker volumes and temporary files
+config/TemporaryFiles/
+config/Processed/
+config/StreamData/
+config/logs/
+config/backups/
+
+# SSL certificates (personal certificates, private keys)
+ssl/*.crt
+ssl/*.key
+ssl/*.pem
+ssl/private/
+
+# Runtime logs
+*.log
+logs/
+
+# ============================================================================
+# DEVELOPMENT AND BUILD FILES
+# ============================================================================
+
+# Node.js (if using any npm packages)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if using any Python utilities)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# IDE and Editor Files
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ============================================================================
+# DOCKER AND CONTAINER DATA
+# ============================================================================
+
+# Docker volumes (if using named volumes)
+docker-volumes/
+data/
+
+# Container logs and runtime data
+container-logs/
+
+# ============================================================================
+# TESTING AND TEMPORARY FILES
+# ============================================================================
+
+# Test recordings and temporary audio files
+test_*.wav
+test_*.mp3
+*.tmp
+temp/
+tmp/
+
+# Backup files
+*.backup
+*.bak
+config/*.backup
+config/*.bak
+
+# ============================================================================
+# WHAT GETS COMMITTED (EXAMPLES)
+# ============================================================================
+# These files ARE committed and are generic for all users:
+#
+# ✅ README.md                    - Project documentation
+# ✅ docker-compose.yml           - Container configuration
+# ✅ Dockerfile                   - Custom image build
+# ✅ config/birdnet.conf.example  - Template configuration
+# ✅ docs/                        - Documentation
+# ✅ scripts/                     - Setup and utility scripts
+# ✅ CONTRIBUTING.md              - Contribution guidelines
+# ✅ LICENSE                      - License file
+# ✅ .github/                     - Issue templates
+#
+# ❌ config/birdnet.conf          - Your personal configuration
+# ❌ config/BirdSongs/            - Your bird recordings
+# ❌ config/*_species_list.txt    - Your local species lists
+# ❌ ssl/*.key                    - Your SSL certificates
+#
+# ============================================================================
